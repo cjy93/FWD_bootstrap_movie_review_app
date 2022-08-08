@@ -1,0 +1,145 @@
+<!-- 
+    Filename: about.html
+    Ths file contains
+    1) About Us section
+    2) Cards to click to different partner local cinema details
+    4) Navigation cards are reactive
+    5) Click on LaBamBa logo to return to home screen (alternative to Navigation cards)
+ -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <title>LaBamBa: Movie Recommender and Reviews</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Chivo:700|Overpass:400,700&display=swap" rel="stylesheet">
+    <!-- Social Media icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="about.js"></script>
+    <link rel="stylesheet" href="base.css">
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="about.css">
+    <script>
+       // var d = moveToSlide(..)
+    </script>
+</head>
+
+<body>
+    <a id="logo" href="index.html"><img id="logo" src="images/logo.png" alt=""></a>
+    <br><br>
+    <!-- Carousel section -->
+    <div class="carousel">
+        <!-- left button -->
+        <button class="carousel__button carousel__button--left is-hidden"><img src="images/left.svg" alt=""></button>
+        <!-- carousel slides -->
+        <div class="carousel__track-container">
+            <ul class="carousel__track">
+                <li class="carousel__slide current-slide">
+                    <img class="carousel__image"
+                        src="https://filipinotimes.net/wp-content/uploads/2022/04/uncharted-movie.jpg" alt="">
+                </li>
+                <li class="carousel__slide">
+                    <img class="carousel__image"
+                        src="https://blogger.googleusercontent.com/img/a/AVvXsEjWL7XWF6fULKh3J9gLE7-d2u7vjWyjjesNFhWzlxSIC0eOfLqDXYCyKfmee9k5UCrRH-BHktCxTAjj8jp2FeYkeLaqG0CrUYJ2Ih_8Rs-jwcagNGSvCG-Q1FYyVH4K8kN0l-zl-YN79eFSaHstuAhnPQVb62JRVKAKdWJM1OzgBYkthK10UD8nn5mdZw=w640-h360"
+                        alt="">
+                </li>
+                <li class="carousel__slide">
+                    <img class="carousel__image"
+                        src="https://is5-ssl.mzstatic.com/image/thumb/UIhkVEhmstoRBzWeW4EZqg/1200x675mf.jpg" alt="">
+                </li>
+            </ul>
+        </div>
+        <!-- right button -->
+        <button class="carousel__button carousel__button--right">
+            <img src="images/right.svg" alt="">
+        </button>
+        <!-- navigation black dots -->
+        <div class="carousel__nav">
+            <button class="carousel__indicator current-slide"></button>
+            <button class="carousel__indicator"></button>
+            <button class="carousel__indicator"></button>
+        </div>
+    </div>
+
+    <!-- About Us -->
+    <div class="aboutUs">
+        <h1>About LaBamBa</h1>
+        <p>&copyLaBamBa was established in the year 2020 to assist movie goers on what movies they should be keeping a
+            lookout
+            for, be it upcoming movies, or all time favourites! This website contains movie listings, details, reviews
+            and even available promotions from our partners(Cinemas).</p>
+
+
+    </div>
+
+    <!-- Promotion -->
+    <div class="container">
+        <h1>Latest Promotions!</h1>
+        <!-- Cards container -->
+        <div class="cards">
+            <!-- Cathay promotions -->
+            <a href="cathaypromotions.html">
+                <div class="card-white">
+                    <img src="https://play-lh.googleusercontent.com/ZarOi4vSKCLHxigagkcudNxFUdm-AGCKaupz4Q-J-EOL8Bg46vNK-9J9wWra6fzOtg"
+                        alt="">
+                    <h3>Cathay Cineplexes Promotions!</h3>
+                    <p>Click here to find out more!</p>
+                </div>
+            </a>
+            <!-- Golden Village promotions -->
+            <a href="goldenVpromotions.html">
+                <div class="card-white">
+                    <img src="https://static.mycareersfuture.gov.sg/images/company/logos/9ef91fe3425d3f0b31b7664f98ffe84c/golden-village-multiplex.jpg"
+                        alt="">
+                    <h3>Golden Village Promotions!</h3>
+                    <p>Click here to find out more!</p>
+                </div>
+            </a>
+            <!-- Shaw promotions -->
+            <a href="shawpromotions.html">
+                <div class="card-white">
+                    <img src="https://play-lh.googleusercontent.com/ZimgCESsLd1wzGpi17hVeHhcTHWbkr5o0YJ-kYUMcZUhZ2nB1LIpwW3FOs5kIfw18Q"
+                        alt="">
+                    <h3>Shaw Theatres Promotions!</h3>
+                    <p>Click here to find out more!</p>
+                </div>
+            </a>
+        </div>
+        <!-- Navigation cards -->
+        <div class="container">
+            <h1>Explore more here</h1>
+            <!-- Cards container -->
+            <div class="cards">
+
+                <!-- Home -->
+                <a href="index.html">
+                    <div class="card-white">
+                        <img src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+                            alt="">
+                        <h3>Back to Home!</h3>
+                        <p>Go to home page or find Promotions!</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Footer section -->
+        <div class="footer">
+            <div class="container">
+                <p>Website made with ❤️ by &copyLaBamBa 2022</p>
+                <div id="socialMedia">
+                    <a href="#" class="fa fa-facebook"></a>
+                    <a href="#" class="fa fa-twitter"></a>
+                    <a href="#" class="fa fa-instagram"></a>
+                </div>
+            </div>
+        </div>
+</body>
+
+
+</html>
+
+
+<!-- Tutorial on how to create carousell(did not work): https://codepen.io/tyler-chipman/pen/qBPoGKE-->

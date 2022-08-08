@@ -1,0 +1,238 @@
+/* 
+	Filename: movieDetail.css
+*/
+/* body styling */
+body {
+	margin: 0 auto;
+	width: 50%;
+	/* max-width: 1300px; */
+	min-width: 1024px;
+	margin-left: auto;
+	margin-right: auto;/*The margin auto is the centering*/
+}
+
+
+body > aside#recommend {
+	width: 15%;
+	float: right;
+	margin-right: 2%;
+}
+
+p{
+    line-height: 1.6;
+}
+
+aside{
+    font-size: 0.8em;
+}
+
+
+
+/* Star rating symbol styling */
+img.icon-star-full {
+	width: 20px;
+	height: 20px;	
+}
+
+img.icon-star-half {
+    width: 20px;
+	height: 20px;
+}
+
+/* Poster and video styling */
+div#poster_and_video{
+	justify-content: center;
+	margin-left: 0%;
+}
+
+img#poster{
+	height:320px;
+	padding:10px;
+	border: 0.5px solid lightgrey;
+}
+
+iframe#video{
+	width:450px;
+	height:320px;
+	padding: 10px;
+	border: 0.5px solid lightgrey;
+}
+
+
+/* Gallery styling */
+#gallery>h3{
+	/* make gallery header float to left side */
+	clear: both;
+}
+#gallery>div {
+	height:190px;
+	padding: 2%;
+	float: left;
+}
+#gallery>div>img{
+	border: 1px solid white;
+	height: 180px;
+	width: auto;
+}
+
+/* make some room for "recommendations" segment on the right */
+section.mainBody{
+	display:block;
+	margin: 0 auto;
+	float: left;
+	width: 70%;
+}
+/* Move some component away from left */
+h1, h2, h3, h3 ~p{
+	margin-left: 0%;
+	border: 10px;
+	font-size: 1.4em;
+}
+
+/* Actors styling*/
+div.col-1-4{
+	width:25%;
+}
+div[class^="col-"]{/*All div with class starts with "col-"*/
+	float: left;
+	padding: 2%;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+ }
+ .circle img{
+    width: relative;
+    height: relative;
+    position: relative;
+    overflow: hidden;
+    border-radius: 10%;
+	border: 2px solid white;
+}
+div.actorNames, div.actorAs{
+	font-size: 0.7em;
+}
+.circle img{
+	display: block;
+	width: 100%;
+ }
+
+
+/* Select h1 from the "recommendations" panel to align properly */
+h1.h1Aside{
+	margin-left: 2%;
+	font-size: 1.6em;
+	border:none;
+}
+
+
+
+
+
+  
+/* Navigation Cards styling */
+div.container{
+    clear:both;
+    justify-content: center;
+}
+
+/* Shift "Explore more here" from the header of the cards back to proper position */
+div.container>h2{
+	margin-left: 10px; 
+}
+
+/* Reduce back the font size, since the css above has enlarged the size in the white cards */
+div.card-white>h3, div.card-white>p{
+	font-size:1.1em;
+}
+/* whitecards, bring effect back to the whitecards to show grey background when hover*/
+.container a:hover{
+	background-color: grey;
+	color: black;
+	cursor: pointer;
+}
+/* whitecards, bring back the original grey font before hover */
+.container p{
+	color: rgb(27, 27, 27);
+	/* color: white; */
+}
+/* White cards. This is for the white-cards, as the background is white, the font cannot be seen */
+.card-white:hover, .card-white:active {
+	color: rgb(26, 19, 19);
+	cursor: pointer;
+}
+
+
+
+
+
+  
+  @media (min-width: 300px) {
+	.container {
+	  width: 400px;
+	}
+	.cards {
+	  grid-template-columns: 1fr;
+	}
+  }
+  
+  @media (min-width: 700px) {
+	.container {
+	  width: 600px;
+	}
+	.cards {
+	  grid-template-columns: 1fr 1fr;
+	}
+  }
+  
+  @media (min-width: 1000px) {
+	.container {
+	  width: 900px;
+	}
+	.cards {
+	  grid-template-columns: 1fr 1fr;
+	}
+  }
+  
+  /* styling for hyperlinks */
+a {
+	color: lightgrey;
+	text-decoration: none;
+	display: block;
+	margin-bottom: 8%;
+}
+/* a:visited {
+	color: grey;
+} */
+a:hover {
+	background-color: black;
+	/* color: white; */
+	cursor: pointer;
+}
+a:focus {
+	outline: thin dotted;
+}
+a:hover, a:active {
+	outline: 0;
+	cursor: pointer;
+}
+
+/* Recommendations styling */
+/* Put recommendations to the right of the page */
+section.recommendations{
+	display: block;
+	float:right;
+}
+
+/* Put recommendations to the right of the page */
+section.recommendations p{
+	margin-top: 3px;
+}
+/* Change hyperlink styling for Recommendations */
+section.recommendations img:hover{
+	background-color: none;
+	border: 5px solid white;
+}
+section.recommendations p:hover{
+	font-weight: 1000;
+}
+

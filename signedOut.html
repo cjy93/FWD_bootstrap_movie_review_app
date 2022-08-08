@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.84.0">
+    <!-- Title -->
+    <title>LaBamBa: Movie Recommender and Reviews</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="images/logo.ico">
+    <link href="https://fonts.googleapis.com/css?family=Chivo:700|Overpass:400,700&display=swap" rel="stylesheet">
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/sign-in/">
+    <!-- Bootstrap core CSS -->
+    <link href="./data/assets/bootstrap.min.css" rel="stylesheet">
+    <!--Bootstrap CSS-->
+    <!-- <link rel="stylesheet" href="bootstrap-5.2.0-beta1-dist/css/bootstrap.min.css"> -->
+    <!-- Optional JavaScript (for animations)-->
+    <!-- <script src="bootstrap-5.2.0-beta1-dist/js/bootstrap.bundle.min.js"></script> -->
+    <!-- Add icon library -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="./base.css" rel="stylesheet">
+
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <b>
+        <h1 class="text-center mt-5">You have successfully logged out!</h1>
+        <!-- Click back home -->
+        <!-- <a href="index_login.html"><button>Back to Sign In</button></a> -->
+
+    </b>
+    <div class="col-md-12 text-center">
+        <a href="index_login.html"><button type="button" class="btn btn-primary">Back to Login!</button></a>
+    </div>
+    <script>
+        window.onload = function () {
+            delete localStorage['email']
+            delete localStorage['password']
+        }
+    </script>
+</body>
+
+</html>

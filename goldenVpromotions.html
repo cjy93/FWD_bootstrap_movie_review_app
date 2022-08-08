@@ -1,0 +1,179 @@
+<!-- 
+    Filename: goldenVpromotions.html
+    This file contains
+    1) Button to click where it will lead to the Golden Village landing page
+    2) Reactive Promotions posters. Once you click you will enter the official detail page from the Cinema website. You can also click on buttons to navigate the different posters
+    3) Reactive Carousell section for latest movies
+    4) Navigation cards are reactive
+    5) Click on LaBamBa logo to return to home screen (alternative to Navigation cards)
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <title>LaBamBa: Movie Recommender and Reviews</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="images/logo.ico">
+    <link href="https://fonts.googleapis.com/css?family=Chivo:700|Overpass:400,700&display=swap" rel="stylesheet">
+    <!-- Social Media icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Styling CSS -->
+    <link rel="stylesheet" href="base.css">
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="about.css">
+    <link rel="stylesheet" href="promotions.css">
+
+</head>
+
+<body>
+    <style>
+        /* hide the unnecessary buttons (we need all buttons so JS script will run) */
+        #button1m,
+        #button2m,
+        #button3m,
+        #button4m,
+        #button5m,
+        #button6m {
+            display: none;
+        }
+    </style>
+    <!-- Logo -->
+    <a id="logo" href="index.html"><img id="logo" src="images/logo.png" alt=""></a>
+    <!-- Direct to booking website -->
+    <h1 class="heading">Book Your Tickets at Golden Village now!</h1>
+    <p id="booking">Click the button below to go to Golden Village's Official Website!</p>
+    <a id="bookingLink" href="https://www.gv.com.sg/"><button id="goToWebsite">Click here to go to
+            GV!</button></a>
+
+    <!-- latest promotions -->
+    <h1 class="heading">Promotions at Golden Village!</h1>
+    <div class="promotions">
+        <div class="col-1-1" id="promotion1">
+            <a id="promoPosterLink"
+                href="https://www.gv.com.sg/GVPromotionDetails#/promotion/6f352109-ff2c-4d6e-a85b-5311251dc0ad"><img
+                    id="promoPosterImg" src="https://media.gv.com.sg/imagesresize/promo_toystudio_2locations.jpg"
+                    alt=""></a>
+        </div>
+        <div class="buttonss">
+            <button class="buttonsm" id="button7m" value="button7">1</button>
+            <button class="buttonsm" id="button8m" value="button8">2</button>
+            <button class="buttonsm" id="button9m" value="button9">3</button>
+            <!-- Trick: hidden buttons, or else the 'about.js' will not run as they are looking for the buttons id -->
+            <button class="buttonsm" id="button1m" value="button7">1</button>
+            <button class="buttonsm" id="button2m" value="button8">2</button>
+            <button class="buttonsm" id="button3m" value="button9">3</button>
+            <button class="buttonsm" id="button4m" value="button7">1</button>
+            <button class="buttonsm" id="button5m" value="button8">2</button>
+            <button class="buttonsm" id="button6m" value="button9">3</button>
+        </div>
+        <script src="about.js">
+        </script>
+
+    </div>
+
+
+
+    <!-- latest movies -->
+    <h1 class="heading">Latest Movies at Golden Village!</h1>
+    <!-- Carousel section -->
+    <div class="carousel">
+        <!-- left button -->
+        <button class="carousel__button carousel__button--left is-hidden"><img src="images/left.svg" alt=""></button>
+        <!-- carousel slides -->
+        <div class="carousel__track-container">
+            <ul class="carousel__track">
+                <li class="carousel__slide current-slide">
+                    <img class="carousel__image"
+                        src="https://cdn.onebauer.media/one/media/62a0/e223/ac3d/8497/f303/debc/jurassic-1.jpg?format=jpg&quality=80&width=1800&ratio=16-9&resize=aspectfill"
+                        alt="">
+                    <div>
+                        <h3>Jurassic World Dominion</h3>
+                        <p>Only in Cinemas June 8</p>
+                    </div>
+
+                </li>
+                <li class="carousel__slide">
+                    <img class="carousel__image"
+                        src="https://blogger.googleusercontent.com/img/a/AVvXsEjWL7XWF6fULKh3J9gLE7-d2u7vjWyjjesNFhWzlxSIC0eOfLqDXYCyKfmee9k5UCrRH-BHktCxTAjj8jp2FeYkeLaqG0CrUYJ2Ih_8Rs-jwcagNGSvCG-Q1FYyVH4K8kN0l-zl-YN79eFSaHstuAhnPQVb62JRVKAKdWJM1OzgBYkthK10UD8nn5mdZw=w640-h360"
+                        alt="">
+                    <div>
+                        <h3>Dr Strange 2: Multiverse of Madness</h3>
+                        <p>Only in Cinemas May 4</p>
+                    </div>
+
+                </li>
+                <li class="carousel__slide">
+                    <img class="carousel__image"
+                        src="https://i.ytimg.com/vi/giXco2jaZ_4/hqdefault.jpg?sqp=-oaymwEcCOADEI4CSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAuXsEFoH9zHPuCThADlCOPtTmzIg"
+                        alt="">
+                    <div>
+                        <h3>Top Gun Maverick</h3>
+                        <p>Only in Cinemas May 25</p>
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+        <!-- right button -->
+        <button class="carousel__button carousel__button--right">
+            <img src="images/right.svg" alt="">
+        </button>
+        <!-- navigation black dots -->
+        <div class="carousel__nav">
+            <button class="carousel__indicator current-slide"></button>
+            <button class="carousel__indicator"></button>
+            <button class="carousel__indicator"></button>
+        </div>
+    </div>
+    <br><br><br>
+
+    <!-- contact card -->
+    <div class="container">
+        <h2>Explore more here</h2>
+        <!-- Cards container -->
+        <div class="cards">
+
+            <!-- Home -->
+            <a href="index.html">
+                <div class="card-white">
+                    <img src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+                        alt="">
+                    <h3>Back to Home!</h3>
+                    <p>Go to home page or find Promotions!</p>
+                </div>
+            </a>
+            <!-- Promotion list -->
+            <a href="about.html">
+                <div class="card-white">
+                    <img src="https://media.istockphoto.com/photos/letterpress-type-about-us-picture-id652180044?b=1&k=20&m=652180044&s=170667a&w=0&h=YHPxcUwGEVQWt4TV6uxMDcHkcBlhQ2I6tZ4-8J0DzTE="
+                        alt="">
+                    <h3>Back to Promotion list and About Us!</h3>
+                    <p>Go to previous page!</p>
+                </div>
+            </a>
+
+
+
+        </div>
+    </div>
+
+
+    <!-- Footer section -->
+    <div class="footer">
+        <div class="container">
+            <p>Website made with ❤️ by &copyLaBamBa 2022</p>
+            <div id="socialMedia">
+                <a href="#" class="fa fa-facebook"></a>
+                <a href="#" class="fa fa-twitter"></a>
+                <a href="#" class="fa fa-instagram"></a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

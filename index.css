@@ -1,0 +1,32 @@
+/* 
+Filename: index.css
+This styling is applied to all sheets! 
+*/
+
+@charset "utf-8";
+body {
+  font-family: Overpass;
+  color: rgb(175, 169, 169);
+  font-size: 18px;
+  margin: 0;
+  background-color: black;
+}
+
+
+
+  /* Bootstrap styling */
+.divider:after,
+.divider:before {
+content: "";
+flex: 1;
+height: 1px;
+background: #eee;
+}
+.h-custom {
+height: calc(100% - 73px);
+}
+@media (max-width: 450px) {
+.h-custom {
+height: 100%;
+}
+}

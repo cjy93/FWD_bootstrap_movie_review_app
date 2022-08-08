@@ -1,0 +1,175 @@
+<!-- 
+    Filename: movieDetail_Review.html
+    Data are scrapped with Python BeautifulSoup from IMDB and Google Images. Youtube links are manually collected because of its ever changing tag class and id.
+    1) Displays article content on left, credits on right
+    2) Calls in the article content based on localStorage variable(storing `id`) from 'listing.html'.
+    3) Article content loaded from one of the html file from folder `reviews_per_movie`. Find the index number that matches the filename like '<indexNumber>.html'
+    4) Navigation cards are reactive
+    5) Click on LaBamBa logo to return to home screen (alternative to Navigation cards)
+ -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <!-- Title -->
+    <title>LaBamBa: Movie Recommender and Reviews</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="images/logo.ico">
+    <link href="https://fonts.googleapis.com/css?family=Chivo:700|Overpass:400,700&display=swap" rel="stylesheet">
+    <!-- Add icon library -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+        crossorigin="anonymous"></script>
+    <!-- Styling CSS -->
+    <link rel="stylesheet" href="base.css">
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="movieDetail_Review.css">
+    <script>
+        // This function "includeHTML()" is to allow you to call another HTML from this HTML document. This is because the other HTML document keeps part of the code that is meant to be from this document. Prevent repeat of information
+        // This segment "includeHTML()" is from a W3 schools tutorial at https://www.w3schools.com/howto/tryit.asp?filename=tryhow_html_include_1
+        function includeHTML() {
+            var z, i, elmnt, file, xhttp;
+            /*loop through a collection of all HTML elements:*/
+            z = document.getElementsByTagName("*");
+            for (i = 0; i < z.length; i++) {
+                elmnt = z[i];
+                /*search for elements with a certain atrribute:*/
+                file = elmnt.getAttribute("w3-include-html");
+                if (file) {
+                    /*make an HTTP request using the attribute value as the file name:*/
+                    xhttp = new XMLHttpRequest();
+                    xhttp.onreadystatechange = function () {
+                        if (this.readyState == 4) {
+                            if (this.status == 200) { elmnt.innerHTML = this.responseText; }
+                            if (this.status == 404) { elmnt.innerHTML = "Page not found."; }
+                            /*remove the attribute, and call this function once more:*/
+                            elmnt.removeAttribute("w3-include-html");
+                            includeHTML();
+                        }
+                    }
+                    xhttp.open("GET", file, true);
+                    xhttp.send();
+                    /*exit the function:*/
+                    return;
+                }
+            }
+        };
+
+        // To check which movie I should display for Review based on the last movie title/name chosen in `listing.html`
+        window.onload = function () {
+            console.log("localstorage", localStorage['id'])
+            var i = localStorage['id']
+            // load csv file
+            d3.csv("data/2022_movies_final_merged.csv")
+                // filter the row corresponding with the id in localStorage['id']
+                .get(function (data) {
+                    data_new = data.filter(function (row) {
+                        return row['id'] == localStorage['id']
+                    })
+                    console.log(data_new[0]);
+                    // let data_new[0] have a shorter var name "d"
+                    var d = data_new[0]
+                    // append values extracted from the data row
+                    $('#imageHere').append("<img id='poster' src='" + d.small_posters + "'>")
+                })
+            // alert(localStorage['id'])
+
+
+        }
+    </script>
+    <!-- NavBar -->
+    <header>
+        <nav class="navbar navbar-expand-md navbar-light fixed-top navBar-custom bg-secondary">
+            <div class="container">
+                <a href="index_login.html" class="navbar-brand">
+                    <img class="px-0" src="./images/logo.png" width="30" height="30" alt="Company Logo">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item px-3">
+                            <a class="nav-link text-white active" aria-current="page" href="listing.html">Listings</a>
+                        </li>
+                        <li class="nav-item px-3">
+                            <a class="nav-link text-white" href="#">Promotions</a>
+                        </li>
+                        <li class="nav-item dropdown  px-3">
+                            <a class="nav-link  text-white dropdown-toggle" href="contacts.html" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Contact Us
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class=" dropdown-item" href="contacts.html">Feedback</a></li>
+                                <li><a class=" dropdown-item" href="contacts.html">Enquiries</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item px-3">
+                            <a class=" text-white nav-link" href="chatbot.html">Live Chat</a>
+                        </li>
+                        <li class="nav-item px-3">
+                            <a class=" text-white nav-link" href="movieDetail.html">Back</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+</head>
+
+<body>
+
+    <div class="row container mt-5 pt-5 mb-5 pb-5">
+        <div id="movieName">
+        </div>
+        <!-- Script loads the html from one of the html files in `reviews_per_movie` based on id chosen by localStorage['id'] -->
+        <script>
+            $("#movieName").append("<div w3-include-html='reviews_per_movie/" + localStorage['id'] + ".html'></div>");
+            includeHTML();
+        </script>
+    </div>
+    <!-- Footer -->
+    <footer class="footer fixed-bottom bg-secondary">
+        <div class="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5">
+            <!-- Copyright -->
+            <div class="text-white mb-3 mb-md-0">
+                &copyLaBamBa 2022. All rights reserved.
+            </div>
+            <!-- Copyright -->
+
+            <!-- Right -->
+            <div>
+                <a href="#!" class="text-white me-4">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="#!" class="text-white me-4">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="#!" class="text-white me-4">
+                    <i class="fab fa-google"></i>
+                </a>
+                <a href="#!" class="text-white">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+            </div>
+            <!-- Right -->
+        </div>
+    </footer>
+</body>
+
+</html>
+
+<!-- tutorial on how to include html from another html is included below -->
+<!-- https://www.w3schools.com/howto/tryit.asp?filename=tryhow_html_include_1 -->
+<!-- https://www.w3schools.com/howto/howto_html_include.asp -->

@@ -1,0 +1,56 @@
+/* Basic styles to be used with all devices and under all conditions */
+
+
+
+article, aside, figcaption, figure,
+footer, header, main, nav, section { 
+   display: block;
+}
+
+
+
+
+.jumboMain{
+    height: 360px;
+    background-image: url('./../../img/compbk.jpg');
+    background-repeat: no-repeat; /* prevent duplicate, instead, stretch*/
+    background-size: cover; /* preserve aspect ratio*/
+    background-attachment: fixed; /* fixed while scrolling up and down */
+
+}
+
+.bd-placeholder-img {
+   font-size: 1.125rem;
+   text-anchor: middle;
+   -webkit-user-select: none;
+   -moz-user-select: none;
+   user-select: none;
+}
+
+@media (min-width: 768px) {
+   .bd-placeholder-img-lg {
+       font-size: 3.5rem;
+   }
+}
+
+
+/* Set the default page element styles */
+body{
+   background-color: black;
+   line-height: 1.2em;
+   color: white;
+}
+
+ul, ol {
+   list-style: none;
+}
+
+nav ul {
+   list-style: none;
+   list-style-image: none;
+}
+
+nav a {
+   text-decoration: none;
+} 
+

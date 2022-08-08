@@ -1,0 +1,322 @@
+<!-- 
+    Filename: movieDetail.html
+    Data are scrapped using Python BeautifulSoup from IMDB and google. Youtube links are manually attained due to its ever changing html tags. ReleaseDate manually attained due to last min realisation that I missed it during scrapping
+    1) Recommendations list are reactive, once clicked, lead to Youtube video of its trailer
+    2) Image of actors are reactive, once clicked, lead to actor profile on IMDB official website
+    3) On button to click to lead to movie review page
+    4) Navigation cards are reactive
+    5) Click on LaBamBa logo to return to home screen (alternative to Navigation cards)
+    6) Pictures under "Gallery" are blur because I scrapped first 5 images from Google Image based on movie title. The images garnered are only thumbnail size, so that is why it is blur.
+    7) All the contents of `movieDetail.html` are scrapped, none are manually typed, hence it is scalable to make this page.
+-->
+
+<head>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <!-- Title -->
+    <title>LaBamBa: Movie Recommender and Reviews</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="images/logo.ico">
+    <link href="https://fonts.googleapis.com/css?family=Chivo:700|Overpass:400,700&display=swap" rel="stylesheet">
+    <!-- Add icon library -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+        crossorigin="anonymous"></script>
+    <!-- Styling CSS -->
+    <link rel="stylesheet" href="base.css">
+    <!-- <link rel="stylesheet" href="index_login.css"> -->
+    <!-- <link rel="stylesheet" href="listing.css"> -->
+    <link rel="stylesheet" href="movieDetails_new.css">
+
+    <script>
+        window.onload = function () {
+            // in javascript no higher level access
+            // passing the var to d3 object may not have any outputs
+            // d3 object is not a dom object
+            // js cannot access higher folder level due to security concenrs
+            console.log("localstorage", localStorage['id'])
+            var i = localStorage['id']
+            d3.csv("data/2022_movies_final_merged.csv")
+                // filter the row corresponding with the id in localStorage['id']
+                .get(function (data) {
+                    data_new = data.filter(function (row) {
+                        return row['id'] == localStorage['id']
+                    })
+                    console.log(data_new[0]);
+                    // let data_new[0] have a shorter var name "d"
+                    var d = data_new[0]
+                    // append values extracted from the data row
+                    $('#title_and_year').append("<h1>" + d.movie + " (" + d.year + ") </h1>")
+                    // Allow video to autoplay with syntax "?autoplay=1&mute=1" right behind emded Youtube link, ref:https://stackoverflow.com/questions/7281765/how-to-embed-an-autoplaying-youtube-video-in-an-iframe
+                    $('#poster').append("<img id='poster' src='" + d.small_posters + "'>")
+                    $("#video").append("<iframe class='responsive-iframe' id='video' src='" + d.youtube + "?autoplay=1&mute=1' allow='autoplay'></iframe>")
+                    $('#release_date').append("<h3>Release Date</h3><p>" + d.release_date + "</p>")
+                    $('#storyPlot').append("<h3>Synopsis</h3><p>" + d.storyPlot + "</p>")
+                    $('#rating_and_timing').append("<h3>LaBamBa Rating</h3><p><img title='star-full' class='icon-star-full' src='https://img.icons8.com/fluency/344/star.png'></img>" + d.imdb + "<br>(" + d.votes + " votes)</p><h3>Runtime</h3><p>" + d.runtime + " mins</p>")
+                    $('#metascore').append("<h3>Metascore</h3><p>" + d.metascore + "</p>")
+                    $('#reviews').append("<a href='movieDetail_Review.html'><button class='btn btn-primary mx-1'>Click Here for Full Review!</button></a><button class='btn btn-primary mx-1' type='button' data-bs-toggle='offcanvas' data-bs-target='#offcanvasExample' aria-controls='offcanvasExample'>Click Here for Full Plot!</button></a> <div class='offcanvas offcanvas-start' tabindex='-1' id='offcanvasExample' aria-labelledby='offcanvasExampleLabel'><div class='offcanvas-header'><h5 class='offcanvas-title text-black' id='offcanvasExampleLabel'>Full Plot</h5><button type='button' class='btn-close' data-bs-dismiss='offcanvas' aria-label='Close'></button></div><div class='offcanvas-body'><div class='text-black'>" + d.Plot + "</div></div></div>") // offCanvas for Plot (side bar emerges)
+                    $('#director').append("<h3>Director</h3><p>" + d.director + "</p>")
+                    $('#actor1').find('.actorPics').append("<a data-bs-toggle='tooltip' title='Click me!' href='" + d.actor1_link + "'><img class='img-fluid img-thumbnail mw-80' src='" + d.actor1_pic + "'></img></a>")
+                    $('#actor1').find('.actorNames').append("<h4><b>" + d.actor1 + "</b></h4>")
+                    $('#actor1').find('.actorAs').append("<p>" + d.actor1_as + "</p>")
+                    $('#actor2').find('.actorPics').append("<a data-bs-toggle='tooltip' title='Click me!' href='" + d.actor2_link + "'><img class='img-fluid img-thumbnail mw-80' src='" + d.actor2_pic + "'></img></a>")
+                    $('#actor2').find('.actorNames').append("<h4><b>" + d.actor2 + "</b></h4>")
+                    $('#actor2').find('.actorAs').append("<p>" + d.actor2_as + "</p>")
+                    $('#actor3').find('.actorPics').append("<a data-bs-toggle='tooltip' title='Click me!'   href='" + d.actor3_link + "'><img class='img-fluid img-thumbnail mw-80' src='" + d.actor3_pic + "'></img></a>")
+                    $('#actor3').find('.actorNames').append("<h4><b>" + d.actor3 + "</b></h4>")
+                    $('#actor3').find('.actorAs').append("<p>" + d.actor3_as + "</p>")
+                    $('#actor4').find('.actorPics').append("<a data-bs-toggle='tooltip' title='Click me!' href='" + d.actor4_link + "'><img class='img-fluid img-thumbnail mw-80' src='" + d.actor4_pic + "'></img></a>")
+                    $('#actor4').find('.actorNames').append("<h4><b>" + d.actor4 + "</b></h4>")
+                    $('#actor4').find('.actorAs').append("<p>" + d.actor4_as + "</p>")
+                    // $('#gallery').append("<div><img src='" + d.google_image1 + "'></img></div><div><img src='"
+                    //     + d.google_image2 + "'></img></div><div><img src='" + d.google_image3
+                    //     + "'></img></div><div><img src='" + d.google_image4 + "'></img></div><div><img src='"
+                    //     + d.google_image5 + "'</img></div>")
+                    $(".carousel-inner").append('<div class="carousel-item active" data-bs-interval="10000"><img src="' + d.HD_0 + '" class="d-block h-50 " alt="..."><div class="carousel-caption d-none d-md-block"><h5 class="text_bg">' + d.movie + '</h5><p class="text_bg">In Cinemas from ' + d.release_date + '</p></div></div><div class="carousel-item" data-bs-interval="2000"><img src="' + d.HD_3 + '" class="d-block h-50" alt="..."><div class="carousel-caption d-none d-md-block"><h5 class="text_bg">' + d.movie + '</h5><p class="text_bg">In Cinemas from ' + d.release_date + '</p></div></div><div class="carousel-item"><img src="' + d.HD_9 + '" class="d-block h-50" alt="..."><div class="carousel-caption d-none d-md-block"><h5 class="text_bg">' + d.movie + '</h5><p class="text_bg">In Cinemas from ' + d.release_date + '</p></div></div><div class="carousel-item" data-bs-interval="2000"><img src="' + d.HD_14 + '" class="d-block h-50" alt="..."><div class="carousel-caption d-none d-md-block"><h5 class="text_bg">' + d.movie + '</h5><p class="text_bg">In Cinemas from ' + d.release_date + '</p></div></div><div class="carousel-item" data-bs-interval="2000"><img src="' + d.HD_19 + '" class="d-block h-50" alt="..."><div class="carousel-caption d-none d-md-block"><h5 class="text_bg">' + d.movie + '</h5><p class="text_bg">In Cinemas from ' + d.release_date + '</p></div></div>')
+                })
+        }
+    </script>
+
+</head>
+
+<body>
+
+
+    <!-- NavBar -->
+    <header>
+        <nav class="navbar navbar-expand-md navbar-light fixed-top navBar-custom bg-secondary">
+            <div class="container">
+                <a href="index_login.html" class="navbar-brand">
+                    <img class="px-0" src="./images/logo.png" width="30" height="30" alt="Company Logo">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item px-3">
+                            <a class="nav-link text-white active" aria-current="page" href="listing.html">Listings</a>
+                        </li>
+                        <li class="nav-item px-3">
+                            <a class="nav-link text-white" href="#">Promotions</a>
+                        </li>
+                        <li class="nav-item dropdown  px-3">
+                            <a class="nav-link  text-white dropdown-toggle" href="contacts.html" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Contact Us
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class=" dropdown-item" href="contacts.html">Feedback</a></li>
+                                <li><a class=" dropdown-item" href="contacts.html">Enquiries</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item px-3">
+                            <a class=" text-white nav-link" href="chatbot.html">Live Chat</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container-fluid mt-5 pt-5">
+        <!-- Main Header -->
+        <div class="row">
+            <div class="col-md-12 text-center display-4">
+                Movie Details
+            </div>
+        </div>
+        </section>
+        <!-- Recommendations section -->
+        <!-- Every movie details page contains these fixed 5 recommended movies. This part is not scrapped -->
+        <div class="row mt-0">
+            <div class="col-md-3 mb-5 mx-3 recommendations">
+                <div class="card h-150 text-white bg-dark mb-3">
+                    <div class="card-body">
+                        <h2 class="h1Aside">Recommendations</h2>
+                        <a data-bs-toggle="tooltip" title="Click me!" href="https://www.youtube.com/embed/giXco2jaZ_4">
+                            <img src="https://m.media-amazon.com/images/M/MV5BMmIwZDMyYWUtNTU0ZS00ODJhLTg2ZmEtMTk5ZmYzODcxODYxXkEyXkFqcGdeQXVyMTEyMjM2NDc2._V1_UY209_CR0,0,140,209_AL_.jpg"
+                                alt="">
+                            <p>Top Gun: Maverick</p>
+                        </a>
+                        <a data-bs-toggle="tooltip" title="Click me!" href="https://www.youtube.com/embed/aWzlQ2N6qqg">
+                            <img src="https://m.media-amazon.com/images/M/MV5BNWM0ZGJlMzMtZmYwMi00NzI3LTgzMzMtNjMzNjliNDRmZmFlXkEyXkFqcGdeQXVyMTM1MTE1NDMx._V1_UY209_CR0,0,140,209_AL_.jpg"
+                                alt="">
+                            <p>Doctor Strange in the Multiverse of Madness</p>
+                        </a>
+                        <a data-bs-toggle="tooltip" title="Click me!" href="https://www.youtube.com/embed/mqqft2x_Aa4">
+                            <img src="https://m.media-amazon.com/images/M/MV5BMDdmMTBiNTYtMDIzNi00NGVlLWIzMDYtZTk3MTQ3NGQxZGEwXkEyXkFqcGdeQXVyMzMwOTU5MDk@._V1_UY209_CR0,0,140,209_AL_.jpg"
+                                alt="">
+                            <p>The Batman</p>
+                        </a>
+                        <a data-bs-toggle="tooltip" title="Click me!" href="https://www.youtube.com/embed/nM4iy0reaCA">
+                            <img src="https://m.media-amazon.com/images/M/MV5BYjdhYTE3NjMtZjI3OC00NzVlLWFiNTUtNzQ3NDNiNTI3NDg4XkEyXkFqcGdeQXVyMTEyMjM2NDc2._V1_UY209_CR0,0,140,209_AL_.jpg"
+                                alt="">
+                            <p>Hustle</p>
+                        </a>
+                        <a data-bs-toggle="tooltip" title="Click me!" href="https://www.youtube.com/embed/ye63hQLDj4k">
+                            <img src="https://m.media-amazon.com/images/M/MV5BOGI5N2FhNzktZjZlNi00MmRjLWE1MmUtNjRlNzQyOGMzYjNhXkEyXkFqcGdeQXVyMDA4NzMyOA@@._V1_UY209_CR0,0,140,209_AL_.jpg"
+                                alt="">
+                            <p>Memory</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- Main Body Contents of movie details based on scrapped data -->
+            <div class="col-md-5 mb-5 mainBody">
+                <div class="row mt-0">
+                    <div class="col-md-12 mb-5 mx-3 ">
+                        <div class="card h-150 bg-dark">
+                            <div class="card-body">
+                                <div class="text-md-center" id="title_and_year"></div>
+                                <section class="container" id="details1">
+                                    <div id="poster" class="text-center">
+                                        <h2 class="text-sm-start text-md-center border mt-0">Movie Details</h2>
+                                    </div>
+                                </section>
+                                <section class="container" id="details2">
+                                    <div id="video" class="text-center container-video"></div>
+                                    <div id="release_date" class="text-center" class="text-center"></div>
+                                    <div id="storyPlot" class="text-center col-sm-4 mx-auto"></div>
+                                    <div id="rating_and_timing" class="text-center"></div>
+                                    <div id="metascore" class="text-center"></div>
+                                </section>
+                                <section class="container" id="details3">
+                                    <div id="reviews" class="text-center">
+                                        <h2 class="text-sm-start text-md-center border mt-0">Reviews and Full Plot</h2>
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- End of second column-->
+
+
+            <div class="col-md-3 mb-5 mx-4">
+                <div class="card h-150  bg-dark">
+                    <div class="card-body">
+                        <section class="container" id="details3">
+                            <!-- Only included first director -->
+                            <div id="director" class="text-center">
+                                <h2 class="text-sm-start text-md-center border mt-0">Actors and Director</h2>
+                            </div>
+                            <!-- Only included 4 main actors -->
+                            <div id="actors" class="text-center">
+                                <h3>Actors</h3>
+                                <div id="actor1" class="col-1-4">
+                                    <div class="actorPics circle"></div>
+                                    <div class="actorNames"></div>
+                                    <div class="actorAs"></div>
+                                </div>
+                                <div id="actor2" class="col-1-4">
+                                    <div class="actorPics circle"></div>
+                                    <div class="actorNames"></div>
+                                    <div class="actorAs"></div>
+                                </div>
+                                <div id="actor3" class="col-1-4">
+                                    <div class="actorPics circle"></div>
+                                    <div class="actorNames"></div>
+                                    <div class="actorAs"></div>
+                                </div>
+                                <div id="actor4" class="col-1-4">
+                                    <div class="actorPics circle"></div>
+                                    <div class="actorNames"></div>
+                                    <div class="actorAs"></div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+
+
+        </div> <!-- end of <div class="row mt-0"> -->
+    </div>
+
+    <!-- Gallery of many pics from this movie -->
+    <div class="row pb-5 mb-5 mx-4">
+        <section class="container" id="details4">
+            <div class="col-12" id="gallery">
+                <h2 class="text-sm-start text-md-center border mt-0">Gallery</h2>
+                <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active"
+                            aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1"
+                            aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2"
+                            aria-label="Slide 3"></button>
+                        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="3"
+                            aria-label="Slide 4"></button>
+                        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="4"
+                            aria-label="Slide 5"></button>
+                    </div>
+                    <div class="carousel-inner ">
+                        <!-- In Script -->
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark"
+                        data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark"
+                        data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer fixed-bottom bg-secondary">
+        <div class="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5">
+            <!-- Copyright -->
+            <div class="text-white mb-3 mb-md-0">
+                &copyLaBamBa 2022. All rights reserved.
+            </div>
+            <!-- Copyright -->
+
+            <!-- Right -->
+            <div>
+                <a href="#!" class="text-white me-4">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="#!" class="text-white me-4">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="#!" class="text-white me-4">
+                    <i class="fab fa-google"></i>
+                </a>
+                <a href="#!" class="text-white">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+            </div>
+            <!-- Right -->
+        </div>
+    </footer>
+    </div>
+
+</body>
+
+
+</html>
+
+
+
+
+
+
+<!-- Tutorial on how to use d3 to add hyperlink to objects: http://bl.ocks.org/d3noob/8150631 -->
+<!-- Tutorial on search bar and filter table: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_filter_table -->

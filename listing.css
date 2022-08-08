@@ -1,0 +1,21 @@
+/* 
+    Filename: listing.css
+*/
+
+
+
+
+
+/* Search bar */
+#myInput {
+    background: rgb(255,255,255) url('https://c.neh.tw/thumb/f/720/m2i8i8m2G6d3A0Z5.jpg')
+   right/contain no-repeat; 
+    width: 100%;
+    font-size: 16px;
+    padding: 12px 20px 12px 40px;
+    border: 1px solid #ddd;
+    justify-content:center;
+    margin: 12px auto;
+    display: block;
+  }
+

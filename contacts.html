@@ -1,0 +1,228 @@
+<!-- 
+Filename: contacts.html
+This file allows user to find contact information about LaBamBa.
+If users have further queries or feedback, they can fill in the form below.
+This form will send the outputs to a Google sheet tagged to my personal email. If you try my app, you can check the output at this sheet : https://docs.google.com/spreadsheets/d/1Sj06m3z4Z06dGNjL7VlEnlXbIlCKOWTjZqtOF2Rx7HA/edit?usp=sharing
+Google sheet column names are to be the same as the `name` attribute in the form boxes.
+Navigation cards are reactive.
+Click on LaBamBa logo to return to home screen (alternative to Navigation cards).
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <!-- Title -->
+    <title>LaBamBa: Movie Recommender and Reviews</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="images/logo.ico">
+    <link href="https://fonts.googleapis.com/css?family=Chivo:700|Overpass:400,700&display=swap" rel="stylesheet">
+    <!-- Add icon library -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+        crossorigin="anonymous"></script>
+    <!-- Styling CSS custom -->
+    <link rel="stylesheet" href="base.css">
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="contacts_validate.css">
+
+</head>
+
+<body>
+    <!-- NavBar -->
+    <header>
+        <nav class="navbar navbar-expand-md navbar-light fixed-top navBar-custom bg-secondary">
+            <div class="container">
+                <a href="index_login.html" class="navbar-brand">
+                    <img class="px-0" src="./images/logo.png" width="30" height="30" alt="Company Logo">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item px-3">
+                            <a class="nav-link text-white active" aria-current="page" href="listing.html">Listings</a>
+                        </li>
+                        <li class="nav-item px-3">
+                            <a class="nav-link text-white" href="#">Promotions</a>
+                        </li>
+                        <li class="nav-item dropdown  px-3">
+                            <a class="nav-link  text-white dropdown-toggle" href="contacts.html" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Contact Us
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class=" dropdown-item" href="contacts.html">Feedback</a></li>
+                                <li><a class=" dropdown-item" href="contacts.html">Enquiries</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item px-3">
+                            <a class=" text-white nav-link" href="chatbot.html">Live Chat</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Body Main -->
+    <div class="container">
+        <div class="row mt-5 pt-5 pb-5 mb-5">
+            <div class="col-md-6">
+                <h1>Contact Us!</h1>
+                <p>We offer offline support via our email follow-ups! Otherwise, you can send in your query in the form
+                    below!
+                    :)
+                </p>
+                <!-- Contact details from Labamba -->
+                <div class="contactInfo">
+                    <article>
+                        <h2>Email Information</h2>
+                        <p>Email: <a href="mailto:servicehelp@labamba.com">servicehelp@labamba.com</a></p>
+                        <p>Phone: <a href="tel:6567721900">6772 1900</a></p>
+                    </article>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <!-- User to fill up form here -->
+                <section class="contactDetails">
+                    <h1>Contact Form</h1>
+                    <p>Please leave your query/issues related to the website/booking here and we will get back to you as
+                        soon as
+                        we
+                        can! Note that required values are marked by an asterisk (*).</p>
+                    <!-- form component -->
+                    <!-- Success/Failure Message here -->
+                    <h4 id="form-alert"></h4>
+                    <!-- Form boxes -->
+                    <form name="google-sheet" method="POST">
+                        <!-- can use method="GET" since this is a dummy form for now -->
+                        <div class="row">
+                            <fieldset class="form-group" id="detailsInfo">
+                                <!-- Legend for whole fieldset  -->
+                                <legend>Fill in the form details</legend>
+                                <div>
+                                    <label for="title">Title</label>
+                                    <input class="form-control" type="text" name="titleBox" id="title" list="titleList">
+                                    <datalist id="titleList">
+                                        <option value="Mr.">Mr.</option>
+                                        <option value="Mrs.">Mrs.</option>
+                                        <option value="Ms.">Ms.</option>
+                                        <option value="Prof.">Prof.</option>
+                                        <option value="Dr.">Dr.</option>
+                                        <option value="Assist. Prof.">Assist. Prof.</option>
+                                        <option value="Assoc. Prof">Assoc. Prof</option>
+                                    </datalist>
+                                </div>
+                                <div>
+                                    <!-- "for" uses the "id" of the input tag -->
+                                    <label for="nameBox">Name*</label>
+                                    <!-- attribute "name" is used for when you send form data to server -->
+                                    <input class="form-control" id="nameBox" name="custName" type="text" required
+                                        placeholder="first-name last-name">
+                                </div>
+                                <div>
+                                    <label for="phoneBox">Phone*</label>
+                                    <input class="form-control" name="custPhone" id="phoneBox" type="text" required
+                                        placeholder="(nn)nnnn-nnnn"
+                                        pattern="\(?([0-9]{2})\)?[-. ]?([0-9]{4})[-. ]?([0-9]{4})">
+                                </div>
+                                <div>
+                                    <label for="email">Email*</label>
+                                    <input class="form-control" type="email" name="emailBox" id="email"
+                                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
+                                </div>
+                                <div>
+                                    <label for="enquiryType">Enquiry type</label>
+                                    <select class="form-control" name="enquirySelection" id="enquiryType">
+                                        <option value="General Enquiry">General Enquiry</option>
+                                        <option value="Promotions enquiry">Promotions Enquiry</option>
+                                        <option value="Promotions enquiry">Feedback</option>
+                                        <option value="Others" selected>Others</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="visitBox">Date</label>
+                                    <input class="form-control" type="date" id="visitBox" name="visitDate">
+                                </div>
+
+
+                                <!-- textarea starts off cols and rows as below. -->
+                                <label for="enquiry">Enquiry/Problem*</label>
+                                <br>
+                                <textarea class="form-control" name="enquiryBox" id="enquiry" cols="30"
+                                    rows="10"></textarea>
+                                <div>
+                                    <button class="btn btn-secondary" type="submit">Submit</button>
+                                    <button class="btn btn-secondary" type="reset">Reset</button>
+                                </div>
+                            </fieldset>
+                        </div>
+
+                    </form>
+                    <!-- Send data to Google Sheet -->
+                    <script>
+                        const scriptURL = 'https://script.google.com/macros/s/AKfycbxZBfBpvEOvzK_TMrB54QGzdS4btmwwnEd_m3a0U1lKJgnQd7_Vx6fMmA_2_3-7b86u2Q/exec'
+                        const form = document.forms['google-sheet']
+
+                        form.addEventListener('submit', e => {
+                            e.preventDefault()
+                            fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+                                .then(response => $('#form-alert').html("You have successfully submitted the form!").attr('class', 'green'))
+                                .catch(error => $('#form-alert').html("You have made some mistakes in the form").attr('class', 'red'))
+                        })
+                    </script>
+
+                </section>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Footer -->
+    <footer class="footer fixed-bottom bg-secondary">
+        <div class="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5">
+            <!-- Copyright -->
+            <div class="text-white mb-3 mb-md-0">
+                &copyLaBamBa 2022. All rights reserved.
+            </div>
+            <!-- Copyright -->
+
+            <!-- Right -->
+            <div>
+                <a href="#!" class="text-white me-4">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="#!" class="text-white me-4">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="#!" class="text-white me-4">
+                    <i class="fab fa-google"></i>
+                </a>
+                <a href="#!" class="text-white">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+            </div>
+            <!-- Right -->
+        </div>
+    </footer>
+
+
+</body>
+
+</html>
+
+
+<!-- How to submit html form to Google spreadsheet: https://www.youtube.com/watch?v=s9XZui6zRPw -->

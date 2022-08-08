@@ -1,0 +1,60 @@
+/* Star rating symbol styling */
+img.icon-star-full {
+width: 20px;
+height: 20px;
+}
+
+img.icon-star-half {
+width: 20px;
+height: 20px;
+}
+
+
+
+
+.container-video {
+position: relative;
+overflow: hidden;
+width: 100%;
+padding-top: 56.25%; /* 16:9 Aspect Ratio (divide 9 by 16 = 0.5625) */
+}
+
+/* Then style the iframe to fit in the container div with full height and width */
+.responsive-iframe {
+position: absolute;
+top: 0;
+left: 0;
+bottom: 0;
+right: 0;
+width: 100%;
+height: 100%;
+} 
+
+.img-thumbnail {
+    width: 180px;
+    height: auto;
+   }
+
+.carousel-control-prev-icon, .carousel-control-next-icon {
+height: 100px;
+width: 100px;
+outline: white;
+background-color: rgba(0, 0, 0, 0.3);
+background-size: 100%, 100%;
+border-radius: 50%;
+border: 1px solid black;
+}
+
+.text_bg {
+    color: rgba(255, 255, 255, 1);
+}
+
+.carousel-caption{
+    background-color: rgba(0,0,0,0.5);
+    padding: 20px;
+}
+
+/* To centralise image in Carousell */
+.carousel-inner img{
+    margin:auto;
+}
