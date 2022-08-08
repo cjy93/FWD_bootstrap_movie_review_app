@@ -71,6 +71,9 @@ Click on LaBamBa logo to return to home screen (alternative to Navigation cards)
                             <a class=" text-white nav-link" href="chatbot.html">Live Chat</a>
                         </li>
                     </ul>
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li><a class=" text-light" href="index_login.html">Sign Out</a></li>
+                    </ul>
                 </div>
             </div>
         </nav>
@@ -219,7 +222,15 @@ Click on LaBamBa logo to return to home screen (alternative to Navigation cards)
         </div>
     </footer>
 
-
+    <script>
+        window.onload = function () {
+            // check if login successful
+            // if stored email is valid
+            if (!localStorage['email'] || !localStorage['password']) {
+                location.href = "index_login.html"
+            }
+        }
+    </script>
 </body>
 
 </html>

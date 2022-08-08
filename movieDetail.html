@@ -36,6 +36,12 @@
 
     <script>
         window.onload = function () {
+            // check if login successful
+            // if stored email is valid
+            if (!localStorage['email'] || !localStorage['password']) {
+                location.href = "index_login.html"
+            }
+
             // in javascript no higher level access
             // passing the var to d3 object may not have any outputs
             // d3 object is not a dom object
@@ -78,7 +84,7 @@
                     //     + d.google_image2 + "'></img></div><div><img src='" + d.google_image3
                     //     + "'></img></div><div><img src='" + d.google_image4 + "'></img></div><div><img src='"
                     //     + d.google_image5 + "'</img></div>")
-                    $(".carousel-inner").append('<div class="carousel-item active" data-bs-interval="10000"><img src="' + d.HD_0 + '" class="d-block h-50 " alt="..."><div class="carousel-caption d-none d-md-block"><h5 class="text_bg">' + d.movie + '</h5><p class="text_bg">In Cinemas from ' + d.release_date + '</p></div></div><div class="carousel-item" data-bs-interval="2000"><img src="' + d.HD_3 + '" class="d-block h-50" alt="..."><div class="carousel-caption d-none d-md-block"><h5 class="text_bg">' + d.movie + '</h5><p class="text_bg">In Cinemas from ' + d.release_date + '</p></div></div><div class="carousel-item"><img src="' + d.HD_9 + '" class="d-block h-50" alt="..."><div class="carousel-caption d-none d-md-block"><h5 class="text_bg">' + d.movie + '</h5><p class="text_bg">In Cinemas from ' + d.release_date + '</p></div></div><div class="carousel-item" data-bs-interval="2000"><img src="' + d.HD_14 + '" class="d-block h-50" alt="..."><div class="carousel-caption d-none d-md-block"><h5 class="text_bg">' + d.movie + '</h5><p class="text_bg">In Cinemas from ' + d.release_date + '</p></div></div><div class="carousel-item" data-bs-interval="2000"><img src="' + d.HD_19 + '" class="d-block h-50" alt="..."><div class="carousel-caption d-none d-md-block"><h5 class="text_bg">' + d.movie + '</h5><p class="text_bg">In Cinemas from ' + d.release_date + '</p></div></div>')
+                    $(".carousel-inner").append('<div class="carousel-item active" data-bs-interval="10000"><img src="' + d.HD_0 + '" class="d-block " style=" width:auto; height: 500px !important;" alt="..."><div class="carousel-caption d-none d-md-block"><h5 class="text_bg">' + d.movie + '</h5><p class="text_bg">In Cinemas from ' + d.release_date + '</p></div></div><div class="carousel-item" data-bs-interval="2000"><img src="' + d.HD_3 + '" class="d-block "  style=" width:auto; height: 500px !important;" alt="..."><div class="carousel-caption d-none d-md-block"><h5 class="text_bg">' + d.movie + '</h5><p class="text_bg">In Cinemas from ' + d.release_date + '</p></div></div><div class="carousel-item"><img src="' + d.HD_9 + '" class="d-block"  style=" width:auto; height: 500px !important;" alt="..."><div class="carousel-caption d-none d-md-block"><h5 class="text_bg">' + d.movie + '</h5><p class="text_bg">In Cinemas from ' + d.release_date + '</p></div></div><div class="carousel-item" data-bs-interval="2000"><img src="' + d.HD_14 + '" class="d-block"  style=" width:auto; height: 500px !important;" alt="..."><div class="carousel-caption d-none d-md-block"><h5 class="text_bg">' + d.movie + '</h5><p class="text_bg">In Cinemas from ' + d.release_date + '</p></div></div><div class="carousel-item" data-bs-interval="2000"><img src="' + d.HD_19 + '" class="d-block"  style=" width:auto; height: 500px !important;" alt="..."><div class="carousel-caption d-none d-md-block"><h5 class="text_bg">' + d.movie + '</h5><p class="text_bg">In Cinemas from ' + d.release_date + '</p></div></div>')
                 })
         }
     </script>
@@ -121,6 +127,9 @@
                         <li class="nav-item px-3">
                             <a class=" text-white nav-link" href="chatbot.html">Live Chat</a>
                         </li>
+                    </ul>
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li><a class=" text-light" href="index_login.html">Sign Out</a></li>
                     </ul>
                 </div>
             </div>
@@ -275,7 +284,102 @@
                 </div>
             </div>
         </section>
+
+        <!--  Add comment box -->
+        <div class="row d-flex justify-content-center mt-5 text-dark">
+            <div class="col-md-8 col-lg-6">
+                <div class="card shadow-0 border" style="background-color: #f0f2f5;">
+                    <div class="card-body p-4">
+                        <div class="form-outline mb-4">
+                            <input type="text" id="addANote" class="form-control" placeholder="Type comment..." />
+                            <label class="form-label" for="addANote">+ Add a note</label>
+                        </div>
+
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <p>Type your note, and hit enter to add it</p>
+
+                                <div class="d-flex justify-content-between">
+                                    <div class="d-flex flex-row align-items-center">
+                                        <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(4).webp"
+                                            alt="avatar" width="25" height="25" />
+                                        <p class="small mb-0 ms-2">Martha</p>
+                                    </div>
+                                    <div class="d-flex flex-row align-items-center">
+                                        <p class="small text-muted mb-0">Upvote?</p>
+                                        <i class="far fa-thumbs-up mx-2 fa-xs text-black"
+                                            style="margin-top: -0.16rem;"></i>
+                                        <p class="small text-muted mb-0">3</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <p>Type your note, and hit enter to add it</p>
+
+                                <div class="d-flex justify-content-between">
+                                    <div class="d-flex flex-row align-items-center">
+                                        <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(32).webp"
+                                            alt="avatar" width="25" height="25" />
+                                        <p class="small mb-0 ms-2">Johny</p>
+                                    </div>
+                                    <div class="d-flex flex-row align-items-center">
+                                        <p class="small text-muted mb-0">Upvote?</p>
+                                        <i class="far fa-thumbs-up mx-2 fa-xs text-black"
+                                            style="margin-top: -0.16rem;"></i>
+                                        <p class="small text-muted mb-0">4</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <p>Type your note, and hit enter to add it</p>
+
+                                <div class="d-flex justify-content-between">
+                                    <div class="d-flex flex-row align-items-center">
+                                        <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(31).webp"
+                                            alt="avatar" width="25" height="25" />
+                                        <p class="small mb-0 ms-2">Mary Kate</p>
+                                    </div>
+                                    <div class="d-flex flex-row align-items-center text-primary">
+                                        <p class="small mb-0">Upvoted</p>
+                                        <i class="fas fa-thumbs-up mx-2 fa-xs" style="margin-top: -0.16rem;"></i>
+                                        <p class="small mb-0">2</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-body">
+                                <p>Type your note, and hit enter to add it</p>
+
+                                <div class="d-flex justify-content-between">
+                                    <div class="d-flex flex-row align-items-center">
+                                        <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(32).webp"
+                                            alt="avatar" width="25" height="25" />
+                                        <p class="small mb-0 ms-2">Johny</p>
+                                    </div>
+                                    <div class="d-flex flex-row align-items-center">
+                                        <p class="small text-muted mb-0">Upvote?</p>
+                                        <i class="far fa-thumbs-up ms-2 fa-xs text-black"
+                                            style="margin-top: -0.16rem;"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End of comment -->
     </div>
+
+
 
     </div>
 
