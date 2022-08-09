@@ -1,6 +1,7 @@
 # MovieRecommender_FullStack
 ## Author: Chan Jia Yi
 ## Date: 9 August 2022
+## App deployed on Heroku : https://fwd-cjy-moviereview-2.herokuapp.com/
 
 # Scrapping Data
 1) Python Codes located in '2022_ScrapeMovies.ipynb'
@@ -27,6 +28,10 @@
 - Rasa and Rasa Webchat – for Recobotmmender system chatbot
 - HTML - layout
 - CSS - styling
+
+
+# Deployment tutorial from   
+https://medium.com/analytics-vidhya/deploying-a-static-web-application-to-heroku-3f21e07e58a
 
 
 
