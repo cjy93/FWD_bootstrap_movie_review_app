@@ -58,3 +58,10 @@ border: 1px solid black;
 .carousel-inner img{
     margin:auto;
 }
+
+/* Poster image modal Tut: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_modal_img */
+#poster_img {
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+  }

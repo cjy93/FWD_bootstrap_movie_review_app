@@ -60,13 +60,13 @@
                     // append values extracted from the data row
                     $('#title_and_year').append("<h1>" + d.movie + " (" + d.year + ") </h1>")
                     // Allow video to autoplay with syntax "?autoplay=1&mute=1" right behind emded Youtube link, ref:https://stackoverflow.com/questions/7281765/how-to-embed-an-autoplaying-youtube-video-in-an-iframe
-                    $('#poster').append("<img id='poster' src='" + d.small_posters + "'>")
+                    $('#poster').append("<img id='poster_img' src='" + d.small_posters + "'>")
                     $("#video").append("<iframe class='responsive-iframe' id='video' src='" + d.youtube + "?autoplay=1&mute=1' allow='autoplay'></iframe>")
                     $('#release_date').append("<h3>Release Date</h3><p>" + d.release_date + "</p>")
                     $('#storyPlot').append("<h3>Synopsis</h3><p>" + d.storyPlot + "</p>")
                     $('#rating_and_timing').append("<h3>LaBamBa Rating</h3><p><img title='star-full' class='icon-star-full' src='https://img.icons8.com/fluency/344/star.png'></img>" + d.imdb + "<br>(" + d.votes + " votes)</p><h3>Runtime</h3><p>" + d.runtime + " mins</p>")
                     $('#metascore').append("<h3>Metascore</h3><p>" + d.metascore + "</p>")
-                    $('#reviews').append("<a href='movieDetail_Review.html'><button class='btn btn-primary mx-1'>Click Here for Full Review!</button></a><button class='btn btn-primary mx-1' type='button' data-bs-toggle='offcanvas' data-bs-target='#offcanvasExample' aria-controls='offcanvasExample'>Click Here for Full Plot!</button></a> <div class='offcanvas offcanvas-start' tabindex='-1' id='offcanvasExample' aria-labelledby='offcanvasExampleLabel'><div class='offcanvas-header'><h5 class='offcanvas-title text-black' id='offcanvasExampleLabel'>Full Plot</h5><button type='button' class='btn-close' data-bs-dismiss='offcanvas' aria-label='Close'></button></div><div class='offcanvas-body'><div class='text-black'>" + d.Plot + "</div></div></div>") // offCanvas for Plot (side bar emerges)
+                    $('#reviews').append("<a href='movieDetail_Review.html'><button class='btn btn-primary mx-1'>Click Here for Full Review!</button></a><button class='btn btn-primary mx-1' type='button' data-bs-toggle='offcanvas' data-bs-target='#offcanvasExample' aria-controls='offcanvasExample'>Click Here for Full Plot!</button></a> <div class='offcanvas offcanvas-start' tabindex='-1' id='offcanvasExample' aria-labelledby='offcanvasExampleLabel'><div class='offcanvas-header'><h5 class='offcanvas-title text-black' id='offcanvasExampleLabel'>Full Plot</h5><button type='button' class='btn-close' data-bs-dismiss='offcanvas' aria-label='Close'></button></div><div class='offcanvas-body'><div class='text-black'>" + d.Plot + "</div></div></div> <a href='data/2022_movies_final_merged.csv' download='data.csv'><button class='btn btn-primary mx-0'>Download data</button></a>") // offCanvas for Plot (side bar emerges)
                     $('#director').append("<h3>Director</h3><p>" + d.director + "</p>")
                     $('#actor1').find('.actorPics').append("<a data-bs-toggle='tooltip' title='Click me!' href='" + d.actor1_link + "'><img class='img-fluid img-thumbnail mw-80' src='" + d.actor1_pic + "'></img></a>")
                     $('#actor1').find('.actorNames').append("<h4><b>" + d.actor1 + "</b></h4>")
@@ -84,9 +84,12 @@
                     //     + d.google_image2 + "'></img></div><div><img src='" + d.google_image3
                     //     + "'></img></div><div><img src='" + d.google_image4 + "'></img></div><div><img src='"
                     //     + d.google_image5 + "'</img></div>")
-                    $(".carousel-inner").append('<div class="carousel-item active" data-bs-interval="10000"><img src="' + d.HD_0 + '" class="d-block " style=" width:auto; height: 500px !important;" alt="..."><div class="carousel-caption d-none d-md-block"><h5 class="text_bg">' + d.movie + '</h5><p class="text_bg">In Cinemas from ' + d.release_date + '</p></div></div><div class="carousel-item" data-bs-interval="2000"><img src="' + d.HD_3 + '" class="d-block "  style=" width:auto; height: 500px !important;" alt="..."><div class="carousel-caption d-none d-md-block"><h5 class="text_bg">' + d.movie + '</h5><p class="text_bg">In Cinemas from ' + d.release_date + '</p></div></div><div class="carousel-item"><img src="' + d.HD_9 + '" class="d-block"  style=" width:auto; height: 500px !important;" alt="..."><div class="carousel-caption d-none d-md-block"><h5 class="text_bg">' + d.movie + '</h5><p class="text_bg">In Cinemas from ' + d.release_date + '</p></div></div><div class="carousel-item" data-bs-interval="2000"><img src="' + d.HD_14 + '" class="d-block"  style=" width:auto; height: 500px !important;" alt="..."><div class="carousel-caption d-none d-md-block"><h5 class="text_bg">' + d.movie + '</h5><p class="text_bg">In Cinemas from ' + d.release_date + '</p></div></div><div class="carousel-item" data-bs-interval="2000"><img src="' + d.HD_19 + '" class="d-block"  style=" width:auto; height: 500px !important;" alt="..."><div class="carousel-caption d-none d-md-block"><h5 class="text_bg">' + d.movie + '</h5><p class="text_bg">In Cinemas from ' + d.release_date + '</p></div></div>')
+                    $(".carousel-inner").append('<div class="carousel-item active" data-bs-interval="10000"><img src="' + d.HD_0 + '" class="d-block " style=" width:auto; height: 700px !important;" alt="..."><div class="carousel-caption d-none d-md-block"><h5 class="text_bg">' + d.movie + '</h5><p class="text_bg">In Cinemas from ' + d.release_date + '</p></div></div><div class="carousel-item" data-bs-interval="2000"><img src="' + d.HD_3 + '" class="d-block "  style=" width:auto; height: 700px !important;" alt="..."><div class="carousel-caption d-none d-md-block"><h5 class="text_bg">' + d.movie + '</h5><p class="text_bg">In Cinemas from ' + d.release_date + '</p></div></div><div class="carousel-item"><img src="' + d.HD_9 + '" class="d-block"  style=" width:auto; height: 700px !important;" alt="..."><div class="carousel-caption d-none d-md-block"><h5 class="text_bg">' + d.movie + '</h5><p class="text_bg">In Cinemas from ' + d.release_date + '</p></div></div><div class="carousel-item" data-bs-interval="2000"><img src="' + d.HD_14 + '" class="d-block"  style=" width:auto; height: 700px !important;" alt="..."><div class="carousel-caption d-none d-md-block"><h5 class="text_bg">' + d.movie + '</h5><p class="text_bg">In Cinemas from ' + d.release_date + '</p></div></div><div class="carousel-item" data-bs-interval="2000"><img src="' + d.HD_19 + '" class="d-block"  style=" width:auto; height: 700px !important;" alt="..."><div class="carousel-caption d-none d-md-block"><h5 class="text_bg">' + d.movie + '</h5><p class="text_bg">In Cinemas from ' + d.release_date + '</p></div></div>')
                 })
-        }
+
+
+        } // end of window.onload
+
     </script>
 
 </head>
@@ -112,7 +115,7 @@
                             <a class="nav-link text-white active" aria-current="page" href="listing.html">Listings</a>
                         </li>
                         <li class="nav-item px-3">
-                            <a class="nav-link text-white" href="#">Promotions</a>
+                            <a class="nav-link text-white" href="promotion.html">Promotions</a>
                         </li>
                         <li class="nav-item dropdown  px-3">
                             <a class="nav-link  text-white dropdown-toggle" href="contacts.html" role="button"
@@ -121,7 +124,7 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <li><a class=" dropdown-item" href="contacts.html">Feedback</a></li>
-                                <li><a class=" dropdown-item" href="contacts.html">Enquiries</a></li>
+                                <li><a class=" dropdown-item" href="signedOut.html">Enquiries</a></li>
                             </ul>
                         </li>
                         <li class="nav-item px-3">
@@ -135,7 +138,7 @@
             </div>
         </nav>
     </header>
-    <div class="container-fluid mt-5 pt-5">
+    <div class="container-fluid mt-5 pt-5 mb-5 pb-5">
         <!-- Main Header -->
         <div class="row">
             <div class="col-md-12 text-center display-4">
@@ -241,6 +244,7 @@
                                     <div class="actorAs"></div>
                                 </div>
                             </div>
+
                         </section>
                     </div>
                 </div>
@@ -255,7 +259,7 @@
         <section class="container" id="details4">
             <div class="col-12" id="gallery">
                 <h2 class="text-sm-start text-md-center border mt-0">Gallery</h2>
-                <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+                <div id="carouselExampleDark" class="carousel carousel-light slide" data-bs-ride="carousel">
                     <div class="carousel-indicators">
                         <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active"
                             aria-current="true" aria-label="Slide 1"></button>
@@ -283,91 +287,94 @@
                     </button>
                 </div>
             </div>
-        </section>
+            <!--End of Gallery-->
+            <!--  Add comment box -->
+            <div class="row d-flex justify-content-center mt-5 text-dark">
+                <div class="col-12">
+                    <h2 class="text-sm-start text-md-center border mt-0 text-light">Comments</h2>
+                </div>
+                <div class="col-md-8 col-lg-6">
+                    <div class="card shadow-0 border" style="background-color: #f0f2f5;">
+                        <div class="card-body p-4">
+                            <div class="form-outline mb-4">
+                                <input type="text" id="addANote" class="form-control" placeholder="Type comment..." />
+                                <label class="form-label" for="addANote">+ Add a note</label>
+                            </div>
 
-        <!--  Add comment box -->
-        <div class="row d-flex justify-content-center mt-5 text-dark">
-            <div class="col-md-8 col-lg-6">
-                <div class="card shadow-0 border" style="background-color: #f0f2f5;">
-                    <div class="card-body p-4">
-                        <div class="form-outline mb-4">
-                            <input type="text" id="addANote" class="form-control" placeholder="Type comment..." />
-                            <label class="form-label" for="addANote">+ Add a note</label>
-                        </div>
+                            <div class="card mb-4">
+                                <div class="card-body">
+                                    <p>Type your note, and hit enter to add it</p>
 
-                        <div class="card mb-4">
-                            <div class="card-body">
-                                <p>Type your note, and hit enter to add it</p>
-
-                                <div class="d-flex justify-content-between">
-                                    <div class="d-flex flex-row align-items-center">
-                                        <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(4).webp"
-                                            alt="avatar" width="25" height="25" />
-                                        <p class="small mb-0 ms-2">Martha</p>
-                                    </div>
-                                    <div class="d-flex flex-row align-items-center">
-                                        <p class="small text-muted mb-0">Upvote?</p>
-                                        <i class="far fa-thumbs-up mx-2 fa-xs text-black"
-                                            style="margin-top: -0.16rem;"></i>
-                                        <p class="small text-muted mb-0">3</p>
+                                    <div class="d-flex justify-content-between">
+                                        <div class="d-flex flex-row align-items-center">
+                                            <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(4).webp"
+                                                alt="avatar" width="25" height="25" />
+                                            <p class="small mb-0 ms-2">Martha</p>
+                                        </div>
+                                        <div class="d-flex flex-row align-items-center">
+                                            <p class="small text-muted mb-0">Upvote?</p>
+                                            <i class="far fa-thumbs-up mx-2 fa-xs text-black"
+                                                style="margin-top: -0.16rem;"></i>
+                                            <p class="small text-muted mb-0">3</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="card mb-4">
-                            <div class="card-body">
-                                <p>Type your note, and hit enter to add it</p>
+                            <div class="card mb-4">
+                                <div class="card-body">
+                                    <p>Type your note, and hit enter to add it</p>
 
-                                <div class="d-flex justify-content-between">
-                                    <div class="d-flex flex-row align-items-center">
-                                        <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(32).webp"
-                                            alt="avatar" width="25" height="25" />
-                                        <p class="small mb-0 ms-2">Johny</p>
-                                    </div>
-                                    <div class="d-flex flex-row align-items-center">
-                                        <p class="small text-muted mb-0">Upvote?</p>
-                                        <i class="far fa-thumbs-up mx-2 fa-xs text-black"
-                                            style="margin-top: -0.16rem;"></i>
-                                        <p class="small text-muted mb-0">4</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card mb-4">
-                            <div class="card-body">
-                                <p>Type your note, and hit enter to add it</p>
-
-                                <div class="d-flex justify-content-between">
-                                    <div class="d-flex flex-row align-items-center">
-                                        <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(31).webp"
-                                            alt="avatar" width="25" height="25" />
-                                        <p class="small mb-0 ms-2">Mary Kate</p>
-                                    </div>
-                                    <div class="d-flex flex-row align-items-center text-primary">
-                                        <p class="small mb-0">Upvoted</p>
-                                        <i class="fas fa-thumbs-up mx-2 fa-xs" style="margin-top: -0.16rem;"></i>
-                                        <p class="small mb-0">2</p>
+                                    <div class="d-flex justify-content-between">
+                                        <div class="d-flex flex-row align-items-center">
+                                            <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(32).webp"
+                                                alt="avatar" width="25" height="25" />
+                                            <p class="small mb-0 ms-2">Johny</p>
+                                        </div>
+                                        <div class="d-flex flex-row align-items-center">
+                                            <p class="small text-muted mb-0">Upvote?</p>
+                                            <i class="far fa-thumbs-up mx-2 fa-xs text-black"
+                                                style="margin-top: -0.16rem;"></i>
+                                            <p class="small text-muted mb-0">4</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="card">
-                            <div class="card-body">
-                                <p>Type your note, and hit enter to add it</p>
+                            <div class="card mb-4">
+                                <div class="card-body">
+                                    <p>Type your note, and hit enter to add it</p>
 
-                                <div class="d-flex justify-content-between">
-                                    <div class="d-flex flex-row align-items-center">
-                                        <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(32).webp"
-                                            alt="avatar" width="25" height="25" />
-                                        <p class="small mb-0 ms-2">Johny</p>
+                                    <div class="d-flex justify-content-between">
+                                        <div class="d-flex flex-row align-items-center">
+                                            <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(31).webp"
+                                                alt="avatar" width="25" height="25" />
+                                            <p class="small mb-0 ms-2">Mary Kate</p>
+                                        </div>
+                                        <div class="d-flex flex-row align-items-center text-primary">
+                                            <p class="small mb-0">Upvoted</p>
+                                            <i class="fas fa-thumbs-up mx-2 fa-xs" style="margin-top: -0.16rem;"></i>
+                                            <p class="small mb-0">2</p>
+                                        </div>
                                     </div>
-                                    <div class="d-flex flex-row align-items-center">
-                                        <p class="small text-muted mb-0">Upvote?</p>
-                                        <i class="far fa-thumbs-up ms-2 fa-xs text-black"
-                                            style="margin-top: -0.16rem;"></i>
+                                </div>
+                            </div>
+
+                            <div class="card">
+                                <div class="card-body">
+                                    <p>Type your note, and hit enter to add it</p>
+
+                                    <div class="d-flex justify-content-between">
+                                        <div class="d-flex flex-row align-items-center">
+                                            <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(32).webp"
+                                                alt="avatar" width="25" height="25" />
+                                            <p class="small mb-0 ms-2">Johny</p>
+                                        </div>
+                                        <div class="d-flex flex-row align-items-center">
+                                            <p class="small text-muted mb-0">Upvote?</p>
+                                            <i class="far fa-thumbs-up ms-2 fa-xs text-black"
+                                                style="margin-top: -0.16rem;"></i>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -375,8 +382,10 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <!-- End of comment -->
+            <!-- End of comment -->
+        </section>
+
+
     </div>
 
 
