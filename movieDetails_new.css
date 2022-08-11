@@ -67,4 +67,5 @@ border: 1px solid black;
   }
 
   /* Hover over actors image */
-.recommendedPics:hover, .actorPics:hover {opacity: 0.7;}
+.recommendedPics:hover{opacity: 0.7;}
+.actorPics:hover {opacity: 0.7;}

@@ -122,40 +122,42 @@
 
     <!-- Promotion -->
     <div class="container">
-        <section class="container" id="welcome">
-            <h1 class="mt-5 text-sm-start text-md-center text-light">Latest Promotions!</h1>
-        </section>
-        <section class="container" id="promoCards">
-            <div class="row justify-content-between">
-                <!-- Cathay -->
-                <article class="card col-sm-3 border-0 mx-2">
-                    <img src="https://play-lh.googleusercontent.com/ZarOi4vSKCLHxigagkcudNxFUdm-AGCKaupz4Q-J-EOL8Bg46vNK-9J9wWra6fzOtg"
-                        class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Cathay Cineplexes Promotions!</h5>
-                        <a href="cathaypromotions.html" class="btn btn-primary">Find out More!</a>
-                    </div>
-                </article>
-                <!-- Golden Village -->
-                <article class="card col-sm-3 border-0 mx-2 ">
-                    <img src="https://static.mycareersfuture.gov.sg/images/company/logos/9ef91fe3425d3f0b31b7664f98ffe84c/golden-village-multiplex.jpg"
-                        class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Golden Village promotions</h5>
-                        <a href="goldenVpromotions.html" class="btn btn-primary">Find out More!</a>
-                    </div>
-                </article>
-                <!-- Shaw Theatre -->
-                <article class="card col-sm-3 border-0 mx-2">
-                    <img src="https://play-lh.googleusercontent.com/ZimgCESsLd1wzGpi17hVeHhcTHWbkr5o0YJ-kYUMcZUhZ2nB1LIpwW3FOs5kIfw18Q"
-                        class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Shaw Theatres Promotions!</h5>
-                        <a href="shawpromotions.html" class="btn btn-primary">Find out More!</a>
-                    </div>
-                </article>
-            </div>
-        </section>
+        <div class="mb-5 pb-5">
+            <section class="container" id="welcome">
+                <h1 class="mt-5 text-sm-start text-md-center text-light">Latest Promotions!</h1>
+            </section>
+            <section class="container" id="promoCards">
+                <div class="row justify-content-between">
+                    <!-- Cathay -->
+                    <article class="card col-sm-3 border-0 mx-2 ">
+                        <img src="https://play-lh.googleusercontent.com/ZarOi4vSKCLHxigagkcudNxFUdm-AGCKaupz4Q-J-EOL8Bg46vNK-9J9wWra6fzOtg"
+                            class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Cathay Cineplexes Promotions!</h5>
+                            <a href="cathaypromotions.html" class="btn btn-primary">Find out More!</a>
+                        </div>
+                    </article>
+                    <!-- Golden Village -->
+                    <article class="card col-sm-3 border-0 mx-2 ">
+                        <img src="https://static.mycareersfuture.gov.sg/images/company/logos/9ef91fe3425d3f0b31b7664f98ffe84c/golden-village-multiplex.jpg"
+                            class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Golden Village promotions</h5>
+                            <a href="goldenVpromotions.html" class="btn btn-primary">Find out More!</a>
+                        </div>
+                    </article>
+                    <!-- Shaw Theatre -->
+                    <article class="card col-sm-3 border-0 mx-2">
+                        <img src="https://play-lh.googleusercontent.com/ZimgCESsLd1wzGpi17hVeHhcTHWbkr5o0YJ-kYUMcZUhZ2nB1LIpwW3FOs5kIfw18Q"
+                            class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Shaw Theatres Promotions!</h5>
+                            <a href="shawpromotions.html" class="btn btn-primary">Find out More!</a>
+                        </div>
+                    </article>
+                </div>
+            </section>
+        </div>
 
         <!-- Footer -->
         <footer class="footer fixed-bottom bg-secondary">
@@ -185,16 +187,16 @@
                 <!-- Right -->
             </div>
         </footer>
-
-        <script>
-            window.onload = function () {
-                // check if login successful
-                // if stored email is valid
-                if (!localStorage['email'] || !localStorage['password']) {
-                    location.href = "index_login.html"
-                }
+    </div>
+    <script>
+        window.onload = function () {
+            // check if login successful
+            // if stored email is valid
+            if (!localStorage['email'] || !localStorage['password']) {
+                location.href = "index_login.html"
             }
-        </script>
+        }
+    </script>
 </body>
 
 
