@@ -2,6 +2,9 @@
 ## Author: Chan Jia Yi
 ## Date: 9 August 2022
 ## App deployed on Heroku : https://fwd-cjy-moviereview-2.herokuapp.com/
+### Warning
+Please run Heroku on **Edge/Mozilla**. If you run your app on Iphone 8,10 or Chrome, you may face CSS loading issue when using the app on Heroku. See the discussion here: https://www.reddit.com/r/Heroku/comments/rwt0cd/css_animation_issues_on_all_my_websites_hosted_on/
+
 
 # Scrapping Data
 1) Python Codes located in '2022_ScrapeMovies.ipynb'
