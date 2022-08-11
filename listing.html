@@ -67,7 +67,7 @@
             d3.csv("data/2022_movies_final_merged.csv")
                 .row(function (d) {
                     id = d.id
-                    poster = "<a id='poster' href='movieDetail.html' alt='" + d.id + "'><img src='" + d.small_posters + "' class='card-img-top img-fluid'></a>"
+                    poster = "<div class='posterImg'><a id='poster' href='movieDetail.html' alt='" + d.id + "'><img src='" + d.small_posters + "' class='card-img-top img-fluid'></a></div>"
                     // movie = "<a href='" + d.links + "'>" + d.movie + "</a>"
                     movie = "<a class='text-inner' id='name' href='movieDetail.html' alt='" + d.id + "'>" + d.movie + "</a>"
                     runtime = parseInt(d.runtime)

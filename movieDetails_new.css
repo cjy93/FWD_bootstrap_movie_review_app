@@ -65,3 +65,6 @@ border: 1px solid black;
     cursor: pointer;
     transition: 0.3s;
   }
+
+  /* Hover over actors image */
+.recommendedPics:hover, .actorPics:hover {opacity: 0.7;}

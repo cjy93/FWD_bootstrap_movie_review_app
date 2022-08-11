@@ -30,8 +30,11 @@
 - CSS - styling
 
 
-# Deployment tutorial from   
-https://medium.com/analytics-vidhya/deploying-a-static-web-application-to-heroku-3f21e07e58a
+# Deployment tutorial from  
+To deploy from Heroku website:   
+https://medium.com/analytics-vidhya/deploying-a-static-web-application-to-heroku-3f21e07e58a   
+To deploy from Command line:  
+https://devcenter.heroku.com/articles/git#:~:text=To%20deploy%20your%20app%20to,heroku%20main%20Initializing%20repository%2C%20done.  
 
 
 
